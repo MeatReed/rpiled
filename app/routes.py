@@ -34,12 +34,12 @@ def home():
         color = request.form["colorChange"]
         if color == "colorpicker": 
             # ledcolor(strip, Color(255,0,0))
-            return color
+            return render_template("home.html")
         if color == "clearLED":
             ledcolor(strip, Color(0,0,0))
-            return color
+            return render_template("home.html")
         if color == "red":
             ledcolor(strip, Color(255,0,0))
-            return color
+            return render_template("home.html")
     else:
         return render_template("home.html")
