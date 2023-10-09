@@ -22,11 +22,9 @@ strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, 
     # Intialize the library (must be called once before other functions).
 strip.begin()
 
-def ledcolor(strip, color, wait_ms=50):
-    for i in range(strip.numPixels()):
-        strip.setPixelColor(i, color)
-        strip.show()
-        time.sleep(wait_ms/1000.0)
+def ledcolor(strip, color):
+    strip.fill(color, 0, LED_COUNT)
+    strip.show()
 
 def hex_to_rgb(hex_color):
     hex_color = hex_color.lstrip('#')
