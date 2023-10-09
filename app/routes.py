@@ -32,7 +32,7 @@ def ledcolor(strip, color, wait_ms=50):
 def home():
     if request.method == "POST":
         color = request.form["colorChange"]
-        print(request.form[0])
+        print(request.args)
         if color == "colorpicker": 
             # ledcolor(strip, Color(255,0,0))
             return render_template("home.html")
