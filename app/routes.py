@@ -29,15 +29,18 @@ def ledcolor(strip, color, wait_ms=50):
         time.sleep(wait_ms/1000.0)
 
 @app.route('/', methods=["GET", "POST"])
-def index():
+def home():
     if request.method == "POST":
         color = request.form["colorChange"]
         if color == "colorpicker": 
             print(color)
             # ledcolor(strip, Color(255,0,0))
+            return render_template("home.html")
         if color == "clearLED":
             ledcolor(strip, Color(0,0,0))
+            return render_template("home.html")
         if color == "red":
             ledcolor(strip, Color(255,0,0))
+            return render_template("home.html")
     else:
         return render_template("home.html")
