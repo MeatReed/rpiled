@@ -28,13 +28,17 @@ def ledcolor(strip, color, wait_ms=50):
         strip.show()
         time.sleep(wait_ms/1000.0)
 
+def hex_to_rgb(hex_color):
+    hex_color = hex_color.lstrip('#')
+    return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+
 @app.route('/', methods=["GET", "POST"])
 def home():
     if request.method == "POST":
         color = request.form["colorChange"]
         if color == "colorpicker": 
             print(request.form.get('colorpicker'))
-            ledcolor(strip, Color(request.form.get('colorpicker'))) 
+            ledcolor(strip, Color(hex_to_rgb(request.form.get('colorpicker'))[0], hex_to_rgb(request.form.get('colorpicker'))[1], hex_to_rgb(request.form.get('colorpicker'))[3])) 
             return render_template("home.html")
         if color == "clearLED":
             ledcolor(strip, Color(0,0,0))
