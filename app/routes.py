@@ -37,8 +37,8 @@ def home():
     if request.method == "POST":
         color = request.form["colorChange"]
         if color == "colorpicker": 
-            print(request.form.get('colorpicker'))
-            ledcolor(strip, Color(hex_to_rgb(request.form.get('colorpicker'))[0], hex_to_rgb(request.form.get('colorpicker'))[1], hex_to_rgb(request.form.get('colorpicker'))[3])) 
+            print(hex_to_rgb(request.form.get('colorpicker')))
+            ledcolor(strip, Color(hex_to_rgb(request.form.get('colorpicker'))[0], hex_to_rgb(request.form.get('colorpicker'))[1], hex_to_rgb(request.form.get('colorpicker'))[2])) 
             return render_template("home.html")
         if color == "clearLED":
             ledcolor(strip, Color(0,0,0))
