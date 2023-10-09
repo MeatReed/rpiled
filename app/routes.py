@@ -39,5 +39,8 @@ def index():
         if color == "clearLED":
             ledcolor(strip, Color(0,0,0))
             return render_template("home.html")
+        if color == "red":
+            ledcolor(strip, Color(255,0,0))
+            return render_template("home.html")
     else:
         return render_template("home.html")
