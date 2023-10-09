@@ -31,7 +31,7 @@ def ledcolor(strip, color, wait_ms=50):
 @app.route('/', methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        color = request.form["colorpicker"]
+        color = request.form["colorChange"]
         if color == "colorpicker": 
             print(color)
             # ledcolor(strip, Color(255,0,0))
