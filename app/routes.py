@@ -24,7 +24,6 @@ strip.begin()
 
 def ledcolor(strip, color):
     strip.fill(color, 0, LED_COUNT)
-    strip.show()
 
 def hex_to_rgb(hex_color):
     hex_color = hex_color.lstrip('#')
