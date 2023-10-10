@@ -35,14 +35,16 @@ def hex_to_rgb(hex_color):
 def home():
     if request.method == "POST":
         color = request.form["colorChange"]
+        brighness = request.form["brightnessChange"]
         if color == "colorpicker": 
             fill(Color(hex_to_rgb(request.form.get('colorpicker'))[0], hex_to_rgb(request.form.get('colorpicker'))[1], hex_to_rgb(request.form.get('colorpicker'))[2])) 
             return render_template("home.html")
         if color == "clearLED":
             fill(Color(0,0,0))
             return render_template("home.html")
-        if color == "red":
-            fill(Color(255,0,0))
+        if brighness == "lum":*
+            print(request.form.get('lum'))
+            strip.setBrightness(request.form.get('lum'))
             return render_template("home.html")
     else:
         return render_template("home.html")

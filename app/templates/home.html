@@ -2,15 +2,18 @@
 
 {% block content %}
 <form action="" method="post">
-  <input type="color" id="colorpicker" name="colorpicker" value="#ff0000" />
-  <button value="colorpicker" type="submit" name="colorChange">Changer la couleur</button>
-</form>
-
-<form action="" method="post">
   <button value="clearLED" id="clearLED" name="colorChange" type="submit">éteindre</button>
 </form>
 
+<h1>Luminosité</h1>
 <form action="" method="post">
-  <button value="red" id="red" name="colorChange" type="submit">Rouge</button>
+  <input type="range" min="1" max="255" value="65" class="slider" id="lum" name="lum" id="lum">
+  <button value="stripbrightness" type="submit" name="brightnessChange">Changer la luminosité</button>
+</form>
+
+<h1>Couleur Statique</h1>
+<form action="" method="post">
+  <input type="color" id="colorpicker" name="colorpicker" value="#ff0000" />
+  <button value="colorpicker" type="submit" name="colorChange">Changer la couleur</button>
 </form>
 {% endblock %}
