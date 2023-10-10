@@ -35,6 +35,7 @@ def hex_to_rgb(hex_color):
 def home():
     if request.method == "POST":
         forms = request.form
+        print(request.form)
         if request.form["colorChange"]:
             color = request.form["colorChange"]
             if color == "colorpicker": 
