@@ -27,6 +27,8 @@ def fill(color):
         strip.setPixelColor(i, color)
     strip.show()
 
+fill(Color(0, 0, 0))
+
 def hex_to_rgb(hex_color):
     hex_color = hex_color.lstrip('#')
     return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
@@ -42,10 +44,13 @@ def home():
                 fill(Color(rgb_color[0], rgb_color[1], rgb_color[2]))
             elif color == "clearLED":
                 fill(Color(0, 0, 0))
+            elif color == "rainbowLED":
+                strip.rainbow()
+                strip.show()
         elif "brightnessChange" in request.form:
             luminosity = request.form.get('lum')
             print(luminosity)
             strip.setBrightness(int(luminosity))
             strip.show()
     
-    return render_template("home.html")
+    return render_template("home.html", stripCount=strip.numPixels(), stripBightness=strip.getBrightness())
