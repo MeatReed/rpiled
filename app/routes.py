@@ -36,13 +36,13 @@ def home():
         color = request.form["colorChange"]
         if color == "colorpicker": 
             print(hex_to_rgb(request.form.get('colorpicker')))
-            fill(strip, Color(hex_to_rgb(request.form.get('colorpicker'))[0], hex_to_rgb(request.form.get('colorpicker'))[1], hex_to_rgb(request.form.get('colorpicker'))[2])) 
+            fill(Color(hex_to_rgb(request.form.get('colorpicker'))[0], hex_to_rgb(request.form.get('colorpicker'))[1], hex_to_rgb(request.form.get('colorpicker'))[2])) 
             return render_template("home.html")
         if color == "clearLED":
-            fill(strip, Color(0,0,0))
+            fill(Color(0,0,0))
             return render_template("home.html")
         if color == "red":
-            fill(Color(255,0,0), 0, 300)
+            fill(Color(255,0,0))
             return render_template("home.html")
     else:
         return render_template("home.html")
