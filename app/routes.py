@@ -34,21 +34,19 @@ def hex_to_rgb(hex_color):
 @app.route('/', methods=["GET", "POST"])
 def home():
     if request.method == "POST":
-        forms = request.form
-        print(request.form)
-        if request.form["colorChange"]:
+        if "colorChange" in request.form:
             color = request.form["colorChange"]
-            if color == "colorpicker": 
-                fill(Color(hex_to_rgb(request.form.get('colorpicker'))[0], hex_to_rgb(request.form.get('colorpicker'))[1], hex_to_rgb(request.form.get('colorpicker'))[2])) 
-                return render_template("home.html")
-            if color == "clearLED":
-                fill(Color(0,0,0))
-                return render_template("home.html")
-        elif request.form["brightnessChange"]:
-            brighness = request.form["brightnessChange"]
-            if brighness == "lum":
-                print(request.form.get('lum'))
-                strip.setBrightness(request.form.get('lum'))
-                return render_template("home.html")
-    else:
-        return render_template("home.html")
+            if color == "colorpicker":
+                hex_color = request.form.get('colorpicker')
+                rgb_color = hex_to_rgb(hex_color)
+                fill(Color(rgb_color[0], rgb_color[1], rgb_color[2]))
+            elif color == "clearLED":
+                fill(Color(0, 0, 0))
+        elif "brightnessChange" in request.form:
+            brightness = request.form["brightnessChange"]
+            if brightness == "lum":
+                luminosity = request.form.get('lum')
+                print(luminosity)
+                strip.setBrightness(int(luminosity))
+    
+    return render_template("home.html")
