@@ -22,9 +22,10 @@ strip = Adafruit_NeoPixel(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, 
     # Intialize the library (must be called once before other functions).
 strip.begin()
 
-def fill(strip, color):
+def fill(color):
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, color)
+    strip.show()
 
 def hex_to_rgb(hex_color):
     hex_color = hex_color.lstrip('#')
@@ -35,13 +36,13 @@ def home():
     if request.method == "POST":
         color = request.form["colorChange"]
         if color == "colorpicker": 
-            fill(strip, Color(hex_to_rgb(request.form.get('colorpicker'))[0], hex_to_rgb(request.form.get('colorpicker'))[1], hex_to_rgb(request.form.get('colorpicker'))[2])) 
+            fill(Color(hex_to_rgb(request.form.get('colorpicker'))[0], hex_to_rgb(request.form.get('colorpicker'))[1], hex_to_rgb(request.form.get('colorpicker'))[2])) 
             return render_template("home.html")
         if color == "clearLED":
-            fill(strip, Color(0,0,0))
+            fill(Color(0,0,0))
             return render_template("home.html")
         if color == "red":
-            fill(strip, Color(255,0,0))
+            fill(Color(255,0,0))
             return render_template("home.html")
     else:
         return render_template("home.html")
