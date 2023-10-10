@@ -44,6 +44,7 @@ def home():
                 fill(Color(0, 0, 0))
         elif "brightnessChange" in request.form:
             brightness = request.form["brightnessChange"]
+            print(brightness)
             if brightness == "lum":
                 luminosity = request.form.get('lum')
                 print(luminosity)
