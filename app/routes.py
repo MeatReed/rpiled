@@ -42,7 +42,7 @@ def home():
         if color == "clearLED":
             fill(Color(0,0,0))
             return render_template("home.html")
-        if brighness == "lum":*
+        if brighness == "lum":
             print(request.form.get('lum'))
             strip.setBrightness(request.form.get('lum'))
             return render_template("home.html")
