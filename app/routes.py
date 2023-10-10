@@ -46,5 +46,6 @@ def home():
             luminosity = request.form.get('lum')
             print(luminosity)
             strip.setBrightness(int(luminosity))
+            strip.show()
     
     return render_template("home.html")
